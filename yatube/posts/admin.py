@@ -1,5 +1,6 @@
-import yatube.settings as sett
 from django.contrib import admin
+
+import yatube.settings as sett
 
 from .models import Group, Post
 

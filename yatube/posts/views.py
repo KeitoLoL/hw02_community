@@ -1,5 +1,6 @@
-import yatube.settings as sett
 from django.shortcuts import get_object_or_404, render
+
+import yatube.settings as sett
 
 from .models import Group, Post
 
