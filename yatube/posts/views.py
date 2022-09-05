@@ -1,4 +1,4 @@
-# from django.http import HttpResponse
+import yatube.settings as sett
 from django.shortcuts import get_object_or_404, render
 
 from .models import Group, Post
@@ -6,7 +6,7 @@ from .models import Group, Post
 
 def index(request):
 
-    posts = Post.objects.order_by('-pub_date')[:10]
+    posts = Post.objects.all()[:sett.displays_number]
     context = {
         'posts': posts,
     }
@@ -17,7 +17,7 @@ def group_posts(request, slug):
 
     template = 'posts/group_list.html'
     group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
+    posts = Post.objects.filter(group=group).all()[:sett.displays_number]
     context = {
         'group': group,
         'posts': posts,
