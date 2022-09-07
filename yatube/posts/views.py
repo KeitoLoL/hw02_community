@@ -1,13 +1,12 @@
+from django.conf import settings
 from django.shortcuts import get_object_or_404, render
-
-import yatube.settings as sett
 
 from .models import Group, Post
 
 
 def index(request):
 
-    posts = Post.objects.all()[:sett.displays_number]
+    posts = Post.objects.all()[:settings.DISPLAYS_NUMBER]
     context = {
         'posts': posts,
     }
@@ -17,8 +16,8 @@ def index(request):
 def group_posts(request, slug):
 
     template = 'posts/group_list.html'
-    group = get_object_or_404(Group, slug=slug)
-    posts = Post.objects.filter(group=group).all()[:sett.displays_number]
+    group = get_object_or_404(Group.objects.all().prefetch_related('groups'), slug=slug)
+    posts = group.groups.all()
     context = {
         'group': group,
         'posts': posts,

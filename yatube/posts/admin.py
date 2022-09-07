@@ -1,6 +1,5 @@
+from django.conf import settings
 from django.contrib import admin
-
-import yatube.settings as sett
 
 from .models import Group, Post
 
@@ -17,7 +16,7 @@ class PostAdmin(admin.ModelAdmin):
     list_editable = ('group',)
     search_fields = ('text',)
     list_filter = ('pub_date',)
-    empty_value_display = sett.empty_value
+    empty_value_display = settings.EMPTY_VALUE
 
 
 admin.site.register(Post, PostAdmin)

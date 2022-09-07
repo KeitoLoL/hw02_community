@@ -14,8 +14,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = []
-empty_value = '-пусто-'
-displays_number = 10
+EMPTY_VALUE = '-пусто-'
+DISPLAYS_NUMBER = 10
 # Application definition
 
 INSTALLED_APPS = [
